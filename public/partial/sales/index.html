@@ -1,0 +1,199 @@
+
+          <template>
+                          <div class="page" data-name="largest-sales">
+
+                <nav-bar
+                    logo="${logo}"
+                    library_url=""
+                    large_url=""
+                    title="Largest Sales"
+                    active="Largest Sales"
+                    show_mint_page="false"
+                    show_activity_page="false"
+                    breadcrumbs="${breadcrumbs}"
+                >
+                </nav-bar>
+
+
+                <div class="page-content">
+
+                    <div class="row">
+            
+                        <div class="fixed-width-content center">
+                            
+                            <div class="hidden-on-load">
+
+                                ${largestSales?.sales?.length > 0 ? $h`
+                                    <div class="block-title block-title-medium">Largest Sales</div>
+                                    <div class="block block-strong inset largest-sales">
+                                      
+                                        ${largestSales?.sales?.map( (sale, index) => $h`
+                                            <div class="margin-bottom">
+                    
+                                              <div class="rank">#${index+1}</div>
+                    
+                                              <div class="square">
+                                                <a href="${link(`t/${sale.tokenId}`)}" class="item-link">
+                                                  <img src="${link(`backup/export/images/${largestSales.rowItemViewModels[sale.tokenId].coverImageId}.${largestSales.rowItemViewModels[sale.tokenId].coverImageGenerated ? 'svg' : 'jpg'}`)}" alt="${sale.tokenId}" height="125" width="125"/>
+                                                </a>
+                                              </div>
+                    
+                                              <div class="sale-info margin-top">
+                                                <a href="${link(`t/${sale.tokenId}`)}" class="item-link">${largestSales.rowItemViewModels[sale.tokenId].title}</a><br />
+                                                ${new Intl.NumberFormat('en-US').format(sale.ethValue)} ETH (${transactionWebService.abbreviateDollars(sale.usdValue, 2)})
+                                                <div class="date">${dayjs(sale.date).format('LL')}</div>
+                    
+                    
+                                              </div>
+                    
+                                            </div>
+                                          `)}
+                  
+                                    </div>
+                                ` : $h` `}
+
+
+                            </div>
+
+
+                            <div class="hide-on-pageinit">
+
+                                <div class="card skeleton-text">
+                                    <div class="card-header">Leaderboard</div>
+                                    <div class="card-content card-content-padding data-table">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            
+<div class="block block-strong inset">
+
+    <span class="footer-link">
+      <strong>Large NFT</strong> code licensed under <a href="https://github.com/LargeNFT/large-nft/blob/master/LICENSE.md" class="external">MIT</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://github.com/LargeNFT/large-nft" class="external">GitHub</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://twitter.com/large_nft" class="external">Twitter</a>
+    </span>
+
+</div>
+
+                        </div>
+                    </div>
+            
+                </div>
+              
+            
+            </div>
+            
+          </template>
+
+          <script>
+
+              
+        const init = (props, { $, $f7, $h, $on, $update }) => {
+
+
+            let channelWebService = globalThis.container.get("ChannelWebService")
+            let baseURI = globalThis.container.get("baseURI")
+            let hostname = globalThis.container.get("hostname")
+
+            let transactionWebService = globalThis.container.get("TransactionWebService")
+
+            let walletService = globalThis.container.get("WalletService")
+
+            let breadcrumbs = [{
+                text: JSON.parse(`"SDF"`),
+                path: baseURI()
+            }, {
+                text: "Largest Sales",
+                path: `${baseURI()}sales`
+            }]
+
+            let logo = JSON.parse(`{}`)
+
+
+            let largestSales
+
+            let lastUpdated
+
+            const link = (href) => {
+              return baseURI() + href
+            }   
+
+
+            const loadLargestSales = async () => {
+            
+                loading = true
+
+                try  {
+                    largestSales = await transactionWebService.getLargestSales(100)
+
+                    let latest = await transactionWebService.getLatest()
+
+                    lastUpdated = latest.lastUpdated
+
+                } catch(ex) { console.log(ex) }
+                
+                $('.hidden-on-load').removeClass('hidden-on-load')
+
+
+                loading = false
+
+                await $update()
+
+            }
+
+
+            $on('pageInit', async () => {
+
+                await channelWebService.loadChannel(
+                        "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+                        '/mr-test-the-test-machine/',
+                        'https://ptoner.github.io'
+                )
+
+                await $update()
+
+                await loadLargestSales()
+
+                $('.hide-on-pageinit').hide()
+
+                await $update()
+
+
+            })
+
+            
+
+document.querySelector('meta[property="og:title"]').setAttribute("content", "Largest Sales for 'Mr Test The Test Machine' NFTs")
+document.querySelector('meta[property="og:url"]').setAttribute("content", "largest-sales")
+document.querySelector('meta[property="og:image"]').setAttribute("content", "")
+document.querySelector('meta[property="og:description"]').setAttribute("content", "Largest Sales for 'Mr Test The Test Machine' NFTs")
+
+document.querySelector('meta[property="twitter:url"]').setAttribute("content", "largest-sales")
+document.querySelector('meta[property="twitter:title"]').setAttribute("content", "Largest Sales for 'Mr Test The Test Machine' NFTs")
+document.querySelector('meta[property="twitter:image"]').setAttribute("content", "")
+document.querySelector('meta[property="twitter:description"]').setAttribute("content", "Largest Sales for 'Mr Test The Test Machine' NFTs" )
+
+            document.querySelector('title').innerHTML = "Largest Sales Mr Test The Test Machine"
+
+            $f7.preloader.hide()
+
+            return $render
+
+        }
+
+        
+
+              export default init
+          </script>
+      

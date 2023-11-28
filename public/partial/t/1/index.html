@@ -1,0 +1,462 @@
+
+          <template>
+                          <div class="page" data-name="token-1">
+
+                <nav-bar
+                    logo="${logo}"
+                    library_url=""
+                    large_url=""
+                    title="Mr Test The Test Machine"
+                    show_mint_page="false"
+                    show_activity_page="false"
+                    breadcrumbs="${breadcrumbs}"
+                >
+                </nav-bar>
+
+                <token-toolbar
+                    token_id="1"
+                    item_count="2" 
+                >
+                </token-toolbar>
+           
+                <div class="page-content">
+
+
+                    <div class="main-split">
+                                
+                        <div class="left">
+                    
+                            <div class="block animation-card ">
+                    
+                                <div class="animation-content ">
+                    
+                                                                            <div style="padding: 0; margin: 0; box-sizing: border-box; height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" xmlns="http://www.w3.org/1999/xhtml">
+
+            <div class="animation-container" style="box-sizing: border-box; padding: 20px; width: 100%; min-height: 100%; background: rgb(241,241,241); background: linear-gradient(-45deg, rgba(241,241,241,1) 13%, rgba(239,243,248,1) 37%, rgba(176,209,220,0.927608543417367) 69%, rgba(255,255,255,1) 100%); font-size: 20px; border: 5px solid #4e82b1; float: left;">
+              <h4 style="margin-top: 0px; font-size: 25px; margin-bottom: 0px;"><b>asdfasdf <span class="token-id" style="color: rgb(79, 79, 79); font-weight: bold;">#1</span></b></h4>
+              <p>asdfasdf</p>
+            </div>
+
+          </div>                                                        
+                                </div>
+                    
+
+                                <div class="block split-row-both">
+                                    <div>
+                                        <a class="button button-outline back-token-button margin-bottom color-gray" href="#" >
+                                            <i class="icon f7-icons color-blue">arrow_left</i>
+                                        </a>
+                                    </div>
+                                    <div>
+                                                                                    <a class="button button-fill continue-button margin-bottom" href="#">
+                                                Continue <i class="f7-icons">arrow_right</i>
+                                            </a>
+                                                                            </div>
+                            
+                                </div>
+                    
+                            </div> 
+                    
+                            <div class="hidden-on-load">
+
+                                ${transactionsViewModel?.transactions?.length > 0 ? $h`
+              
+                                    <transaction-row transactions="${transactionsViewModel}" items="${transactionsViewModel?.rowItemViewModels}" token="1">
+                                        <div class="card-header">
+                                            Activity
+                                            <div class="last-updated">Last updated: ${dayjs(transactionsViewModel.lastUpdated).fromNow()}</div>
+                                        </div>
+                                    </transaction-row>
+
+                           
+                                ` : $h` `}
+              
+                            </div>
+
+                            <div class="hide-on-pageinit">
+
+                                <div class="card skeleton-text">
+                                    <div class="card-header">Activity</div>
+                                    <div class="card-content card-content-padding data-table">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                                    </div>
+
+                                  </div>
+
+                            </div>
+
+
+                        </div>
+                    
+                        <div class="right">
+                            
+                            <div class="card" >
+                                <form class="card-content card-content-padding" id="token_navigator_form">
+                                  <input type="number" class="goto-input" style="width: 60px; border: 1px solid #cccccc; display: inline-block;" value="1" min="0"  />
+                                  <span class="paging-label">Enter Token ID</span>
+                                  <button class="goto-button button button-small button-fill">Go</button>
+                                </form>
+                            </div>
+                    
+                                                
+                                <div class="card large-only">
+                                  <div class="card-content card-content-padding">
+                                    <div class="segmented">
+                    
+                                                                              <a class="button button-outline" href="#"></a>
+                                                          
+                    
+                                                                              <a class="button button-outline continue-button" data-transition="none">
+                                            <i class="f7-icons">arrow_right</i>
+                                          </a>
+                                                          
+                                    </div>
+                                  </div>
+                                </div>
+                    
+                                                
+                    
+                    
+                     
+                                                
+
+                    
+                            <div class="card">
+                                
+                                <div class="card-header">
+                                    Attributes
+                                </div>
+                    
+                                <div class="card-content data-table">
+                    
+                                                        
+                                </div>
+                    
+                            </div>
+                    
+                    
+                                                            
+                    
+                                                            <div class="card">
+                                    <div class="card-header">Cover Image</div>
+                                    <div class="card-content">
+                                        <img src="/mr-test-the-test-machine/backup/export/images/QmUxfZLgxk4tjHGUtDy3VkRSiMdAVrAZiN96qE9fZ8NmiM.svg" class="cover-image-preview" />
+                                    </div>
+                                </div>
+                                                
+                    
+                    
+                        </div>
+                    
+                        <div class="left">
+                            
+<div class="block block-strong inset">
+
+    <span class="footer-link">
+      <strong>Large NFT</strong> code licensed under <a href="https://github.com/LargeNFT/large-nft/blob/master/LICENSE.md" class="external">MIT</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://github.com/LargeNFT/large-nft" class="external">GitHub</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://twitter.com/large_nft" class="external">Twitter</a>
+    </span>
+
+</div>
+          
+                        </div>
+
+
+                    </div>
+
+
+<!--                     
+                    <div class="swiper" id="swiper-1" style="display:none;">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" data-url="/mr-test-the-test-machine/index.html">
+                            </div> 
+
+                            <div class="swiper-slide">   
+
+
+
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div> -->
+
+                </div>
+
+            </div>
+            
+          </template>
+
+          <script>
+
+              
+        const init = (props, { $, $f7, $h, $on, $update }) => {
+            
+
+            let channelWebService = globalThis.container.get("ChannelWebService")
+            let baseURI = globalThis.container.get("baseURI")
+            let hostname = globalThis.container.get("hostname")
+
+            let transactionWebService = globalThis.container.get("TransactionWebService")
+            let walletService = globalThis.container.get("WalletService")
+            
+            let uiService = globalThis.container.get("UiService")
+
+            let readerSettingsService = globalThis.container.get("ReaderSettingsService")
+            let tokenService = globalThis.container.get("TokenService")
+            let tokenOwnerService = globalThis.container.get("TokenOwnerService")
+
+            let logo = JSON.parse(`{}`)
+
+
+            let title = `asdfasdf`
+            let tokenId = parseInt(`1`)
+            
+
+            let breadcrumbs = [{
+                text: JSON.parse(`"SDF"`),
+                path: baseURI()
+            }, {
+                text: "Explore",
+                path: `${baseURI()}explore.html`
+            },{
+                text: title ? title : `#${tokenId}`
+            }]
+
+
+            let hasPrevious = JSON.parse(`false`)
+            let hasNext = JSON.parse(`true`)
+
+            let swiper
+
+            let transactionsViewModel
+            let latest
+
+            let token
+            let tokenOwnerDisplay
+
+            let metadataURL = `${baseURI()}backup/export/metadata/1.json`
+
+
+            let contractAddress = walletService.truncateEthAddress('undefined')
+
+            
+
+            const link = (href) => {
+              return baseURI() + href
+            }   
+
+
+            const initSwiper = () => {
+
+                // swiper = $f7.swiper.create('#swiper-1', {
+                //     initialSlide: 1,
+                //     effect: 'fade',
+                //     on: {
+                //         slideChange() {
+
+                //             const swiper = this
+
+                //             let slide = $(swiper.wrapperEl).children('.swiper-slide').eq(swiper.activeIndex)
+
+                //             let url = $(slide).data('url')
+
+
+                //             if (url) {
+                //                 $f7.views.main.router.navigate(url, {
+                //                     transition: 'none',
+                //                     history: true,
+                //                     reloadAll: true
+                //                 })
+                //             }
+                //         }
+                //     }
+                // })
+
+                // $('#swiper-1').show()
+
+                const prev = (e) => {
+
+                    let link = "/mr-test-the-test-machine/index.html"
+                    
+                    $f7.views.main.router.navigate(link, {
+                        transition: 'none',
+                        history: true,
+                        reloadAll: true
+                    })
+
+                    // swiper.slidePrev(0)
+                }
+
+                const next = (e) => {
+
+                    let link = "/mr-test-the-test-machine/t/2"
+
+
+                    if (link?.length > 0) {
+                        $f7.views.main.router.navigate(link, {
+                            transition: 'none',
+                            history: true,
+                            reloadAll: true
+                        })
+                    }
+
+
+                    // swiper.slideNext(0)
+                }
+
+                $('.fab-left-center').on('click', prev)
+                $('.fab-right-center').on('click', next)
+
+                $('.back-token-button').on('click', prev)
+                $('.continue-button').on('click', next)
+
+            }
+
+            const loadActivity = async () => {
+
+                loading = true
+
+                try  {
+
+                    latest = await transactionWebService.getLatest()
+
+                    if (latest?.latestToken && tokenId <= latest.latestToken) {
+
+                        token = await tokenService.get(tokenId)
+
+                        if (token) {
+                            tokenOwnerDisplay = await tokenOwnerService.getDisplayName(token.currentOwnerId)
+                            transactionsViewModel = token.transactionsViewModel
+                        }
+
+                    }
+
+                    if (!transactionsViewModel) {
+                        transactionsViewModel = {}
+                    }
+
+                    transactionsViewModel.lastUpdated = latest.lastUpdated
+
+                } catch(ex) { console.log(ex) }
+
+                $('.hidden-on-load').removeClass('hidden-on-load')
+
+                loading = false
+
+                await $update()
+
+
+            }
+
+
+            $on('pageInit', async () => {
+
+                await channelWebService.loadChannel(
+                        "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+                        '/mr-test-the-test-machine/',
+                        'https://ptoner.github.io'
+                )
+
+                let readerSettings = await readerSettingsService.get()
+                $f7.emit('current-page-updated', readerSettings.currentPage)
+
+                await $update()
+
+                await readerSettingsService.updateCurrentPage(parseInt(props.tokenId))
+                $('#token_navigator_form').on('submit', goTokenFormSubmit)
+
+                initSwiper()
+
+                await loadActivity()
+
+                // $('.swiper').show()
+                $('.hide-on-pageinit').hide()
+
+            })          
+
+            $on('pageReinit', async () => {
+
+                await channelWebService.loadChannel(
+                        "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+                        '/mr-test-the-test-machine/',
+                        'https://ptoner.github.io'
+                )
+
+                let readerSettings = await readerSettingsService.get()
+                currentPage = readerSettings.currentPage
+
+                await $update()
+
+                initSwiper()
+
+                await loadActivity()
+
+                //Dispatch event so we can refresh list
+                let ev = new CustomEvent('transactions-updated')
+                ev.transactionsViewModel = transactionsViewModel
+                document.dispatchEvent(ev)
+
+
+                // $('.swiper').show()
+                $('.hide-on-pageinit').hide()
+
+            })
+
+            $on('pageBeforeOut', async () => {
+                // $('.swiper').hide()
+                // console.log('Destroying swiper #swiper-1')
+                // $f7.swiper.destroy('#swiper-1')
+            })
+
+            const goTokenFormSubmit = async (e) => {
+          
+                e.preventDefault()
+
+                const val = $(e.currentTarget).children('.goto-input').val()
+
+                try {
+                    $f7.views.main.router.navigate(`${baseURI()}t/${parseInt(val.toString())}`)
+                } catch(ex) {
+                    console.log(ex)
+                    $f7.dialog.alert("Invalid Page")
+                }
+
+            }
+
+            
+
+document.querySelector('meta[property="og:title"]').setAttribute("content", "asdfasdf / Mr Test The Test Machine #1")
+document.querySelector('meta[property="og:url"]').setAttribute("content", "t/1")
+document.querySelector('meta[property="og:image"]').setAttribute("content", "https://ptoner.github.io/mr-test-the-test-machine/backup/generated/images/QmUxfZLgxk4tjHGUtDy3VkRSiMdAVrAZiN96qE9fZ8NmiM.png")
+document.querySelector('meta[property="og:description"]').setAttribute("content", "asdfasdf")
+
+document.querySelector('meta[property="twitter:url"]').setAttribute("content", "t/1")
+document.querySelector('meta[property="twitter:title"]').setAttribute("content", "asdfasdf / Mr Test The Test Machine #1")
+document.querySelector('meta[property="twitter:image"]').setAttribute("content", "https://ptoner.github.io/mr-test-the-test-machine/backup/generated/images/QmUxfZLgxk4tjHGUtDy3VkRSiMdAVrAZiN96qE9fZ8NmiM.png")
+document.querySelector('meta[property="twitter:description"]').setAttribute("content", "asdfasdf" )
+
+
+            document.querySelector('title').innerHTML = "asdfasdf / Mr Test The Test Machine #1"
+
+            $f7.preloader.hide()
+
+            return $render;
+
+        }
+
+        
+
+              export default init
+          </script>
+      

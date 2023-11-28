@@ -1,0 +1,194 @@
+
+          <template>
+                      <div class="page" data-name="home">
+
+          <nav-bar
+              logo="${logo}"
+              library_url=""
+              large_url=""
+              title="Attributes"
+              show_mint_page="false"
+              show_activity_page="false"
+              breadcrumbs="${breadcrumbs}"
+          >
+          </nav-bar>
+
+
+          <div class="page-content">
+
+            <div class="fixed-width-content center">
+
+              <div class="hidden-on-load">
+
+                <div class="block-title block-title-medium large-only">Attributes</div>
+                <div class="card scarcity-report-card data-table margin-top">
+  
+                  <div class="card-content">
+
+                      <table class="attributes-table">
+
+                                              </table>
+  
+                  </div>
+                </div>
+  
+            
+                <div class="block">
+                  <br />
+                </div>
+
+              </div>
+
+              <div class="hide-on-pageinit">
+
+                  <div class="card skeleton-text">
+                      <div class="card-header">Attributes</div>
+                      <div class="card-content card-content-padding data-table">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                          lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                      </div>
+
+                  </div>
+
+              </div>
+
+              
+<div class="block block-strong inset">
+
+    <span class="footer-link">
+      <strong>Large NFT</strong> code licensed under <a href="https://github.com/LargeNFT/large-nft/blob/master/LICENSE.md" class="external">MIT</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://github.com/LargeNFT/large-nft" class="external">GitHub</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://twitter.com/large_nft" class="external">Twitter</a>
+    </span>
+
+</div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+        
+          </template>
+
+          <script>
+
+                    const init = (props, { $, $f7, $h, $on, $update }) => {
+
+
+            let channelWebService = globalThis.container.get("ChannelWebService")
+            let baseURI = globalThis.container.get("baseURI")
+            let hostname = globalThis.container.get("hostname")
+
+            let itemWebService = globalThis.container.get("ItemWebService")
+            let transactionWebService = globalThis.container.get("TransactionWebService")
+
+            let loading
+            let attributesOverall
+
+            let logo = JSON.parse(`{}`)
+
+            let breadcrumbs = [{
+                text: JSON.parse(`"SDF"`),
+                path: baseURI()
+            }, {
+                text: "Attributes"
+            }]
+
+            const loadOverallSales = async () => {
+                
+                loading = true
+
+                try  {
+
+                    attributesOverall = await transactionWebService.getAttributesOverall()
+
+                    let latest = await transactionWebService.getLatest()
+                    lastUpdated = latest.lastUpdated
+    
+                } catch(ex) { 
+                    console.log(ex) 
+                }
+                
+                loading = false
+
+                await $update()
+
+            }
+
+
+
+            $on('pageInit', async () => {
+
+              await channelWebService.loadChannel(
+                      "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+                      '/mr-test-the-test-machine/',
+                      'https://ptoner.github.io'
+              )
+
+              await $update()
+
+              $('.infinite-scroll-preloader').show()
+
+              await loadOverallSales()
+
+              $('.hidden-on-load').removeClass('hidden-on-load')
+              $('.hide-on-pageinit').hide()
+
+              await $update()
+
+            })
+
+
+            $on('pageReinit', async () => {
+
+              await channelWebService.loadChannel(
+                      "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+                      '/mr-test-the-test-machine/',
+                      'https://ptoner.github.io'
+              )
+
+              await $update()
+
+              await loadOverallSales()
+
+              $('.hide-on-pageinit').hide()
+
+              await $update()
+
+            })
+
+            
+
+document.querySelector('meta[property="og:title"]').setAttribute("content", "Attribute Report for 'Mr Test The Test Machine' NFTs")
+document.querySelector('meta[property="og:url"]').setAttribute("content", "attributes.html")
+document.querySelector('meta[property="og:image"]').setAttribute("content", "")
+document.querySelector('meta[property="og:description"]').setAttribute("content", "Attribute Report for 'Mr Test The Test Machine' NFTs")
+
+document.querySelector('meta[property="twitter:url"]').setAttribute("content", "attributes.html")
+document.querySelector('meta[property="twitter:title"]').setAttribute("content", "Attribute Report for 'Mr Test The Test Machine' NFTs")
+document.querySelector('meta[property="twitter:image"]').setAttribute("content", "")
+document.querySelector('meta[property="twitter:description"]').setAttribute("content", "Attribute Report for 'Mr Test The Test Machine' NFTs" )
+          
+
+            document.querySelector('title').innerHTML = "Mr Test The Test Machine Attribute Report"
+
+            $f7.preloader.hide()
+
+            return $render;
+
+          
+
+      }
+      
+
+              export default init
+          </script>
+      
