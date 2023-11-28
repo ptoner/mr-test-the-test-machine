@@ -1,0 +1,405 @@
+
+          <template>
+                          <div class="page" data-name="user-activity">
+
+                <nav-bar
+                    logo="${logo}"
+                    library_url=""
+                    large_url=""
+                    title="User"
+                    active="User"
+                    show_mint_page="false"
+                    show_activity_page="false"
+                    breadcrumbs="${breadcrumbs}"
+                >
+                </nav-bar>
+
+
+                <div class="page-content infinite-scroll-content" id="user-tokens-infinite-scroll">
+
+                    <div class="fixed-width-content center">
+
+                        <div class="hidden-on-load">
+
+                            <div class="block-title block-title-large">Account Details</div>
+                            <div class="block-header">${address}</div>
+                        
+                            <div class="block">
+                        
+                                <div class="user-info">
+                            
+                                    <div class="row">
+                                        <div>Etherscan</div>
+                                        <div >
+                                            <a href="https://etherscan.io/address/${address}" class="item-link external">${address ? walletService.truncateEthAddress(address) : ' '}</a>
+                                        </div>
+                                    </div>
+                            
+                                    ${tokenOwner?.ensName ? $h`
+                                        <div class="row">
+                                            <div>ENS Name</div>
+                                            <div>${tokenOwner?.ensName}</div>
+                                        </div>  
+                                    ` : $h` `}
+                            
+                                    <div class="row">
+                                        <div>Tokens Owned</div>
+                                        <div><strong>${tokenOwner?.count ? tokenOwner.count : 0}</strong></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div>Transactions</div>
+                                        <div><strong>${tokenOwner?.transactionCount}</strong></div>
+                                    </div>
+
+                            
+                                    <div class="row">
+                                        <div>Rank</div>
+                                        <div><strong>#${tokenOwner?.rank}</strong> (#${tokenOwner?.overallRank} overall)</div>
+                                    </div>
+
+                                </div>
+                            
+                            </div>
+
+
+                            ${tokenOwner ? $h`
+                            
+                                
+                                <div class="block">
+                                    <p class="segmented">
+                                        <a class="button button-outline button-active" href="#">Owned</a>
+                                        <a class="button button-outline" href="${baseURI()}u/activity?address=${address}">Activity</a>
+                                    </p>
+                                </div>
+                            
+                            ` : $h`
+                                
+                            `}
+                          
+                            <div class="list cards-list virtual-list" id="user-tokens-list">
+                                <ul class="item-flex"></ul>
+                            </div>
+                          
+                            <div class="preloader infinite-scroll-preloader"></div>
+
+                            
+                        </div>
+
+                        <div class="hide-on-pageinit">
+
+                            <div class="card skeleton-text">
+                                <div class="card-header">User Info</div>
+                                <div class="card-content card-content-padding data-table">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                                    lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                                </div>
+
+                              </div>
+
+                        </div>
+
+                        <br /><br />
+
+
+                        
+<div class="block block-strong inset">
+
+    <span class="footer-link">
+      <strong>Large NFT</strong> code licensed under <a href="https://github.com/LargeNFT/large-nft/blob/master/LICENSE.md" class="external">MIT</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://github.com/LargeNFT/large-nft" class="external">GitHub</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://twitter.com/large_nft" class="external">Twitter</a>
+    </span>
+
+</div>
+
+
+
+                    </div>
+            
+                </div>
+              
+            
+            </div>
+            
+          </template>
+
+          <script>
+
+                      const init = (props, { $, $f7, $h, $on, $update }) => {
+
+            let channelWebService = globalThis.container.get("ChannelWebService")            
+            let baseURI = globalThis.container.get("baseURI")
+            let hostname = globalThis.container.get("hostname")
+
+            let tokenOwnerService = globalThis.container.get("TokenOwnerService")
+            let itemWebService = globalThis.container.get("ItemWebService")
+            let walletService = globalThis.container.get("WalletService")
+            let uiService = globalThis.container.get("UiService")
+            let transactionWebService = globalThis.container.get("TransactionWebService")
+
+            let address
+            let tokenOwner
+
+            let virtualList
+
+            let hasMoreItems = true
+            let loadingInProgress = false
+
+            let page = 1
+
+            let firstPageItems
+            let totalTokens
+
+            let logo = JSON.parse(`{}`)
+
+            let breadcrumbs = [{
+                text: JSON.parse(`"SDF"`),
+                path: baseURI()
+            }, {
+                text: "Leaderboard",
+                path: `${baseURI()}leaderboard`
+            }]
+
+
+            const link = (href) => {
+              return baseURI() + href
+            }   
+
+            const imageLink = (rowItemViewModel) => {
+                let imgExt = rowItemViewModel.coverImageGenerated ? 'svg' : 'jpg'
+                return link('backup/export/images/' + rowItemViewModel.coverImageId + "." + imgExt)
+            }
+
+            const loadUser = async () => {
+                
+                loading = true
+
+                try  {
+                    tokenOwner = await tokenOwnerService.get(address)
+
+                    if (tokenOwner) {
+
+                        let result = await itemWebService.ownerItemPage(address, page)
+
+                        firstPageItems = result.items
+                        totalTokens = result.totalMatches
+
+                    }
+
+
+                    createVirtualList()
+
+                    
+                } catch(ex) { 
+                    $('.infinite-scroll-preloader').hide()
+                    console.log(ex) 
+                }
+                
+                loading = false
+
+                await $update()
+
+            }
+
+            const createVirtualList = () => {
+
+                virtualList = $f7.virtualList.create({
+                    el: '#user-tokens-list',
+                    createUl: false,
+                    renderItem(item) {
+                        return getTemplate(item)
+                    },
+                    height: 287,
+                    items: firstPageItems,                    
+                    cols: getWidth() >= 1024 ? 5 : 2,
+                    emptyTemplate: `
+                        <li class="item-content">
+                            <div class="item-inner">
+                                No results found.
+                            </div>
+                        </li>
+                        `
+                })
+
+
+                if (virtualList.items?.length < totalTokens) {
+                    hasMoreItems = true
+                    document.getElementById("user-tokens-infinite-scroll").addEventListener( 'infinite', infiniteScroll )
+                } else {
+                    hasMoreItems = false
+                    $('.infinite-scroll-preloader').hide()
+                }
+
+            }
+
+            const resizeListener = (e) => {
+                const viewPortWidth = getWidth()
+
+                if (virtualList) {
+                    virtualList.params.cols = viewPortWidth >= 1024 ? 5 : 2
+                    virtualList?.update()
+                }
+
+
+                console.log("Resized...")
+
+            }
+
+            const getWidth = () => {
+                return Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+            }
+
+            const getTemplate = (rowItemViewModel) => {
+                
+                let tokenLink = link('t/' + rowItemViewModel.tokenId)
+                let imgExt = rowItemViewModel.coverImageGenerated ? 'svg' : 'jpg'
+                let imageLink = link('backup/export/images/' + rowItemViewModel.coverImageId + "." + imgExt)
+                let title = rowItemViewModel.title
+
+                return `<li class="flex-card">
+                            <a href="${tokenLink}" class="item-link">
+                                <div class="card" >
+                                    <div class="card-content">
+                                        <div class="square">
+                                            <img src="${imageLink}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        ${title}
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                `
+            }
+
+            async function infiniteScroll(e) {
+
+                // Exit, if loading in progress
+                if (loadingInProgress || !hasMoreItems) return
+
+                console.log(`Infinite scrolling...`)
+
+                // Set loading flag
+                loadingInProgress = true
+                $('.infinite-scroll-preloader').show()
+
+
+                try {
+                    
+                    page++
+
+                    let result = await itemWebService.ownerItemPage(address, page)
+
+                    let items = result.items
+                    virtualList.appendItems(items)
+
+                    if (virtualList.items?.length == tokenOwner.tokenIds?.length) {
+                        hasMoreItems = false
+                    }
+
+                } catch (ex) {
+                    console.log(ex)
+                }
+
+                $f7.preloader.hide()
+                $('.infinite-scroll-preloader').hide()
+
+
+                loadingInProgress = false
+
+
+            }
+
+            $on('pageInit', async () => {
+
+                await channelWebService.loadChannel(
+                        "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+                        '/mr-test-the-test-machine/',
+                        'https://ptoner.github.io'
+                )
+
+                await $update()
+
+                window.addEventListener('resize', resizeListener)
+
+                address = $f7.views.main.router.currentRoute?.query?.address
+
+                breadcrumbs.push({
+                    text: address
+                })
+
+                $('.infinite-scroll-preloader').show()
+
+                await loadUser()
+
+                $('.hidden-on-load').removeClass('hidden-on-load')
+                $('.hide-on-pageinit').hide()
+
+                await $update()
+
+            })
+
+            $on('pageReinit', async () => {
+
+                await channelWebService.loadChannel(
+                        "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+                        '/mr-test-the-test-machine/',
+                        'https://ptoner.github.io'
+                )
+
+                await $update()
+
+                address = $f7.views.main.router.currentRoute?.query?.address
+
+                breadcrumbs.push({
+                    text: address
+                })
+
+                await loadUser()
+
+                $('.hide-on-pageinit').hide()
+
+                await $update()
+
+
+            })
+
+            $on('pageBeforeOut', async () => {
+                window.removeEventListener('resize', resizeListener)
+                $f7.infiniteScroll.destroy('#user-tokens-infinite-scroll')
+            })
+
+            
+
+document.querySelector('meta[property="og:title"]').setAttribute("content", "User Profile for Mr Test The Test Machine")
+document.querySelector('meta[property="og:url"]').setAttribute("content", "u")
+document.querySelector('meta[property="og:image"]').setAttribute("content", "")
+document.querySelector('meta[property="og:description"]').setAttribute("content", "User Profile for Mr Test The Test Machine")
+
+document.querySelector('meta[property="twitter:url"]').setAttribute("content", "u")
+document.querySelector('meta[property="twitter:title"]').setAttribute("content", "User Profile for Mr Test The Test Machine")
+document.querySelector('meta[property="twitter:image"]').setAttribute("content", "")
+document.querySelector('meta[property="twitter:description"]').setAttribute("content", "User Profile for Mr Test The Test Machine" )
+
+
+            document.querySelector('title').innerHTML = "User Activity Mr Test The Test Machine"
+
+            $f7.preloader.hide()
+
+            return $render
+
+        }
+        
+
+              export default init
+          </script>
+      

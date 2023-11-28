@@ -1,0 +1,102 @@
+
+          <template>
+                          <div class="page" data-name="transaction">
+
+                <nav-bar
+                    logo="${logo}"
+                    library_url=""
+                    large_url=""
+                    title="Transaction"
+                    active="Transaction"
+                    show_mint_page="false"
+                    show_activity_page="false"
+                >
+                </nav-bar>
+
+
+                <div class="page-content">
+
+                    <div class="row">
+            
+                        <div class="fixed-width-content center">
+                            <transaction-viewer></transaction-viewer> 
+                        </div>
+                    </div>
+            
+                </div>
+              
+            
+            </div>
+            
+          </template>
+
+          <script>
+
+                      
+        const init = (props, { $, $f7, $h, $on, $update }) => {
+
+
+            let channelWebService = globalThis.container.get("ChannelWebService")
+
+            
+            let baseURI = globalThis.container.get("baseURI")
+            let hostname = globalThis.container.get("hostname")
+
+            let logo = JSON.parse(`{}`)
+
+
+            // let eventWebService = globalThis.container.get("EventWebService")
+
+            $on('pageInit', async () => {
+
+                // let activityStartChangedEvent = new CustomEvent('user-address-changed')
+                // activityStartChangedEvent.address = $f7.views.main.router.currentRoute?.query?.address
+
+                // document.dispatchEvent(activityStartChangedEvent)
+
+                // await $update()
+
+            })
+
+            $on('pageReinit', async () => {
+
+                // let activityStartChangedEvent = new CustomEvent('user-address-changed')
+                // activityStartChangedEvent.address = $f7.views.main.router.currentRoute?.query?.address
+
+                // document.dispatchEvent(activityStartChangedEvent)
+
+                // await $update()
+
+            })
+
+
+            $on('pageBeforeOut', async () => {
+
+            })
+
+            
+
+document.querySelector('meta[property="og:title"]').setAttribute("content", "Transaction for Mr Test The Test Machine")
+document.querySelector('meta[property="og:url"]').setAttribute("content", "transaction")
+document.querySelector('meta[property="og:image"]').setAttribute("content", "")
+document.querySelector('meta[property="og:description"]').setAttribute("content", "Transaction for Mr Test The Test Machine")
+
+document.querySelector('meta[property="twitter:url"]').setAttribute("content", "transaction")
+document.querySelector('meta[property="twitter:title"]').setAttribute("content", "Transaction for Mr Test The Test Machine")
+document.querySelector('meta[property="twitter:image"]').setAttribute("content", "")
+document.querySelector('meta[property="twitter:description"]').setAttribute("content", "Transaction for Mr Test The Test Machine" )
+
+
+            document.querySelector('title').innerHTML = "Transaction Mr Test The Test Machine"
+
+            $f7.preloader.hide()
+
+            return $render
+
+        }
+
+        
+
+              export default init
+          </script>
+      

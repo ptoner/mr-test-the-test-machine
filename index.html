@@ -1,0 +1,321 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    
+
+    <style>
+      html {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
+
+
+    <title>
+      Mr Test The Test Machine    </title>
+
+    
+        <link rel="manifest" href="/mr-test-the-test-machine/app.webmanifest">
+        <link rel="icon" href="/mr-test-the-test-machine/manifest-icon.svg">
+        <link rel="apple-touch-icon" href="/mr-test-the-test-machine/apple-touch-icon.png">
+        <meta name="theme-color" content="#FCB827">
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, user-scalable=yes, minimal-ui, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <meta name="description" content="asdfasd" >
+
+
+        <meta property="og:title" content="Mr Test The Test Machine" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="index.html" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content="asdfasd" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="index.html" />
+        <meta property="twitter:title" content="Mr Test The Test Machine" />
+        <meta property="twitter:description" content="asdfasd" />
+        <meta property="twitter:image" content="" />
+
+
+    
+          <script defer src="/mr-test-the-test-machine/large/reader/browser/js/runtime.reader.js?v=0.21.3"></script>
+          <script defer src="/mr-test-the-test-machine/large/reader/browser/js/vendors.reader.js?v=0.21.3"></script>
+          <script defer src="/mr-test-the-test-machine/large/reader/browser/js/main.reader.js?v=0.21.3"></script>
+
+          <link rel="preload" href="/mr-test-the-test-machine/large/reader/browser/css/vendors.css?v=0.21.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+          <link rel="preload" href="/mr-test-the-test-machine/large/reader/browser/css/main.css?v=0.21.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+              
+
+  </head>
+
+  <body>
+
+    <div id="app">
+
+      <div class="view view-main">
+
+        <!--pageContent-->
+        <div class="page" data-name="reader-home">
+
+          <nav-bar
+            logo="${logo}"
+            library_url=""
+            large_url=""
+            title="Mr Test The Test Machine"
+            show_mint_page="false"
+            show_activity_page="false"
+            breadcrumbs="${breadcrumbs}"
+          >
+          </nav-bar>
+
+
+          <token-toolbar
+            token_id="0"
+            item_count="2" 
+          >
+          </token-toolbar>
+
+
+          <div class="page-content">
+
+            <div class="main-split">
+
+              <div class="left">
+
+                <div class="card channel-card-show">
+
+                  <div class="card-header banner" id="banner"                         style="background: #cccccc;"
+
+                                              >
+    
+                        <a href="/mr-test-the-test-machine/index.html">
+                                                      <i class="f7-icons avatar">photo</i>
+                                                  </a>
+    
+                  </div>
+    
+                  <div class="card-content card-content-padding">
+    
+                    <div class="title">
+                      Mr Test The Test Machine                    </div>
+    
+                                          <div class="name">
+                        By 0x8424…ab55                      </div>
+                        
+                    <div class="description" id="channel-show-description-4be0885f-ec83-4c53-ae74-109f2bde5f34">
+                      <p>asdfasd</p>                    </div>
+    
+    
+                    <div class="start-buttons">
+                      <a href="/mr-test-the-test-machine/t/1" class="button button-fill text-color-white ready-button" data-transition="f7-cover">Browse Collection</a>
+                      <a href="/mr-test-the-test-machine/explore.html" class="button button-outline ready-button" data-transition="f7-cover">Explore</a>
+
+                    </div>
+    
+    
+                  </div>
+    
+                </div>
+    
+                <div class="hidden-on-load">
+    
+                  
+
+                    
+  
+                  
+  
+  
+  
+                  ${homeViewModel?.largestSales && homeViewModel.largestSales?.sales?.length > 0 ? $h`
+
+                    <div class="card card-header-divider data-table">
+                      <div class="card-header">Largest Sales</div>
+                      <div class="card-content card-content-padding">
+                        <largest-sales largest_sales="${homeViewModel?.largestSales}"></largest-sales>
+                      </div>
+                    </div>
+  
+  
+                    <div class="block save-row">
+                      <div class="large-only"></div>
+                      <a href="${link('sales')}" class="button button-fill">View Top 100</a>
+                    </div>
+  
+                  ` : $h` `}
+  
+  
+                  ${homeViewModel?.recent?.transactions?.length > 0 ? $h`
+    
+                    <transaction-row transactions="${homeViewModel.recent}" items="${homeViewModel?.recent.rowItemViewModels}">
+
+                      <div class="card-header">
+                        Recent Activity
+                        <div class="last-updated">Updated: ${dayjs(homeViewModel?.recent.lastUpdated).fromNow()}</div>
+                      </div>
+
+                    </transaction-row>
+  
+                    <div class="block save-row">
+                      <div class="large-only"></div>
+                      <a href="${link('activity')}" class="button button-fill">View All</a>
+                    </div>
+              
+                  ` : $h`<span />`}
+    
+    
+                </div>
+                
+                <div class="hide-on-pageinit">
+    
+                  <div class="card skeleton-text">
+                    <div class="card-header">Overall Stats</div>
+                    <div class="card-content card-content-padding data-table">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+  
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+  
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+  
+                    </div>
+  
+                  </div>
+  
+  
+                  <div class="card skeleton-text">
+                    <div class="card-header">Overall Stats</div>
+                    <div class="card-content card-content-padding data-table">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                    </div>
+  
+                  </div>
+  
+  
+                  <div class="card skeleton-text">
+                    <div class="card-header">Overall Stats</div>
+                    <div class="card-content card-content-padding data-table">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                    </div>
+  
+                  </div>
+  
+  
+                  <div class="card skeleton-text">
+                      <div class="card-header">Recent Activity</div>
+                      <div class="card-content card-content-padding data-table">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                          lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                      </div>
+    
+                  </div>
+    
+                </div>
+    
+  
+                    
+    
+  
+  
+                  
+
+              </div>
+
+              <div class="right">
+
+                <div class="hidden-on-load">
+      
+                  
+
+                    
+                </div>
+
+              </div>
+
+              <div class="left">
+                
+<div class="block block-strong inset">
+
+    <span class="footer-link">
+      <strong>Large NFT</strong> code licensed under <a href="https://github.com/LargeNFT/large-nft/blob/master/LICENSE.md" class="external">MIT</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://github.com/LargeNFT/large-nft" class="external">GitHub</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://twitter.com/large_nft" class="external">Twitter</a>
+    </span>
+
+</div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+        <!--/pageContent-->
+
+      </div>
+
+    </div>
+
+        
+    <script type="module" id="page-init-scripts">
+
+      //pageInitScripts
+///pageInitScripts
+
+    </script>
+
+    
+
+    <script type="module" id="page-scripts">
+
+        let init = () => {
+
+            let baseURL = '/mr-test-the-test-machine/'
+            let hostname = 'https://ptoner.github.io'
+            let version = atob('IjAuMjEuMyI=').replace('"', '').replace('"', '')
+            let channelId = '4be0885f-ec83-4c53-ae74-109f2bde5f34'    
+
+            let app = reader.initReader(baseURL, hostname, version, channelId)
+        }
+
+        init()
+
+    
+        
+    </script>
+
+
+    
+
+
+
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,98 @@
+
+          <template>
+              
+<!DOCTYPE html>
+<
+          </template>
+
+          <script>
+
+              
+      const init = (props, { $, $f7, $h, $on, $update }) => {   
+
+        let channelWebService = globalThis.container.get("ChannelWebService")
+        let baseURI = globalThis.container.get("baseURI")
+        let hostname = globalThis.container.get("hostname")
+
+
+
+        let itemWebService = globalThis.container.get("ItemWebService")
+
+        let logo = JSON.parse(`{}`)
+
+        let searching = false
+
+        let results = []
+
+        let breadcrumbs = [{
+                text: JSON.parse(`"SDF"`),
+                path: "index.html"
+            }, {
+                text: "Search"
+        }]
+
+        $on('pageInit', async () => {
+
+
+          await channelWebService.loadChannel(
+              "4be0885f-ec83-4c53-ae74-109f2bde5f34",
+              '/mr-test-the-test-machine/',
+              'https://ptoner.github.io'
+          )
+
+          await $update()
+
+
+          // const params = new Proxy(new URLSearchParams(window.location.search), {
+          //   get: (searchParams, prop) => searchParams.get(prop),
+          // })
+
+          // $f7.preloader.showIn('.cards-list')
+          
+          // searching = true
+          // $update()
+
+          // results = await itemWebService.query(params.query)
+
+          // searching = false
+          // $update()
+
+          // $f7.preloader.hideIn('.cards-list')
+
+        })
+
+        $on('pageBeforeOut', async () => {
+        })
+
+        const searchbarSubmit = (e) => {
+          e.preventDefault()
+        }
+
+
+        
+
+document.querySelector('meta[property="og:title"]').setAttribute("content", "Mr Test The Test Machine")
+document.querySelector('meta[property="og:url"]').setAttribute("content", "search.html")
+document.querySelector('meta[property="og:image"]').setAttribute("content", "")
+document.querySelector('meta[property="og:description"]').setAttribute("content", "Search 'Mr Test The Test Machine' NFTs")
+
+document.querySelector('meta[property="twitter:url"]').setAttribute("content", "search.html")
+document.querySelector('meta[property="twitter:title"]').setAttribute("content", "Mr Test The Test Machine")
+document.querySelector('meta[property="twitter:image"]').setAttribute("content", "")
+document.querySelector('meta[property="twitter:description"]').setAttribute("content", "Search 'Mr Test The Test Machine' NFTs" )
+
+        document.querySelector('title').innerHTML = "Search 'Mr Test The Test Machine' NFTs."
+
+        $f7.preloader.hide()
+    
+
+        return $render
+
+
+      }
+
+      
+
+              export default init
+          </script>
+      

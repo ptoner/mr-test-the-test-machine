@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    
+
+    <style>
+    html {
+        visibility: hidden;
+        opacity: 0;
+    }
+    </style>
+
+
+    <title>asdfasdf / Mr Test The Test Machine #1</title>
+
+
+    
+        <link rel="manifest" href="/mr-test-the-test-machine/app.webmanifest">
+        <link rel="icon" href="/mr-test-the-test-machine/manifest-icon.svg">
+        <link rel="apple-touch-icon" href="/mr-test-the-test-machine/apple-touch-icon.png">
+        <meta name="theme-color" content="#FCB827">
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, user-scalable=yes, minimal-ui, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <meta name="description" content="asdfasdf" >
+
+
+        <meta property="og:title" content="asdfasdf / Mr Test The Test Machine #1" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="t/1" />
+        <meta property="og:image" content="https://ptoner.github.io/mr-test-the-test-machine/backup/generated/images/QmUxfZLgxk4tjHGUtDy3VkRSiMdAVrAZiN96qE9fZ8NmiM.png" />
+        <meta property="og:description" content="asdfasdf" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="t/1" />
+        <meta property="twitter:title" content="asdfasdf / Mr Test The Test Machine #1" />
+        <meta property="twitter:description" content="asdfasdf" />
+        <meta property="twitter:image" content="https://ptoner.github.io/mr-test-the-test-machine/backup/generated/images/QmUxfZLgxk4tjHGUtDy3VkRSiMdAVrAZiN96qE9fZ8NmiM.png" />
+    
+          <script defer src="/mr-test-the-test-machine/large/reader/browser/js/runtime.reader.js?v=0.21.3"></script>
+          <script defer src="/mr-test-the-test-machine/large/reader/browser/js/vendors.reader.js?v=0.21.3"></script>
+          <script defer src="/mr-test-the-test-machine/large/reader/browser/js/main.reader.js?v=0.21.3"></script>
+
+          <link rel="preload" href="/mr-test-the-test-machine/large/reader/browser/css/vendors.css?v=0.21.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+          <link rel="preload" href="/mr-test-the-test-machine/large/reader/browser/css/main.css?v=0.21.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+          
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="view view-main">
+
+            <!--pageContent-->
+            <div class="page" data-name="token-1">
+
+                <nav-bar
+                    logo="${logo}"
+                    library_url=""
+                    large_url=""
+                    title="Mr Test The Test Machine"
+                    show_mint_page="false"
+                    show_activity_page="false"
+                    breadcrumbs="${breadcrumbs}"
+                >
+                </nav-bar>
+
+                <token-toolbar
+                    token_id="1"
+                    item_count="2" 
+                >
+                </token-toolbar>
+           
+                <div class="page-content">
+
+
+                    <div class="main-split">
+                                
+                        <div class="left">
+                    
+                            <div class="block animation-card ">
+                    
+                                <div class="animation-content ">
+                    
+                                                                            <div style="padding: 0; margin: 0; box-sizing: border-box; height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" xmlns="http://www.w3.org/1999/xhtml">
+
+            <div class="animation-container" style="box-sizing: border-box; padding: 20px; width: 100%; min-height: 100%; background: rgb(241,241,241); background: linear-gradient(-45deg, rgba(241,241,241,1) 13%, rgba(239,243,248,1) 37%, rgba(176,209,220,0.927608543417367) 69%, rgba(255,255,255,1) 100%); font-size: 20px; border: 5px solid #4e82b1; float: left;">
+              <h4 style="margin-top: 0px; font-size: 25px; margin-bottom: 0px;"><b>asdfasdf <span class="token-id" style="color: rgb(79, 79, 79); font-weight: bold;">#1</span></b></h4>
+              <p>asdfasdf</p>
+            </div>
+
+          </div>                                                        
+                                </div>
+                    
+
+                                <div class="block split-row-both">
+                                    <div>
+                                        <a class="button button-outline back-token-button margin-bottom color-gray" href="#" >
+                                            <i class="icon f7-icons color-blue">arrow_left</i>
+                                        </a>
+                                    </div>
+                                    <div>
+                                                                                    <a class="button button-fill continue-button margin-bottom" href="#">
+                                                Continue <i class="f7-icons">arrow_right</i>
+                                            </a>
+                                                                            </div>
+                            
+                                </div>
+                    
+                            </div> 
+                    
+                            <div class="hidden-on-load">
+
+                                ${transactionsViewModel?.transactions?.length > 0 ? $h`
+              
+                                    <transaction-row transactions="${transactionsViewModel}" items="${transactionsViewModel?.rowItemViewModels}" token="1">
+                                        <div class="card-header">
+                                            Activity
+                                            <div class="last-updated">Last updated: ${dayjs(transactionsViewModel.lastUpdated).fromNow()}</div>
+                                        </div>
+                                    </transaction-row>
+
+                           
+                                ` : $h` `}
+              
+                            </div>
+
+                            <div class="hide-on-pageinit">
+
+                                <div class="card skeleton-text">
+                                    <div class="card-header">Activity</div>
+                                    <div class="card-content card-content-padding data-table">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                                        lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.
+                                    </div>
+
+                                  </div>
+
+                            </div>
+
+
+                        </div>
+                    
+                        <div class="right">
+                            
+                            <div class="card" >
+                                <form class="card-content card-content-padding" id="token_navigator_form">
+                                  <input type="number" class="goto-input" style="width: 60px; border: 1px solid #cccccc; display: inline-block;" value="1" min="0"  />
+                                  <span class="paging-label">Enter Token ID</span>
+                                  <button class="goto-button button button-small button-fill">Go</button>
+                                </form>
+                            </div>
+                    
+                                                
+                                <div class="card large-only">
+                                  <div class="card-content card-content-padding">
+                                    <div class="segmented">
+                    
+                                                                              <a class="button button-outline" href="#"></a>
+                                                          
+                    
+                                                                              <a class="button button-outline continue-button" data-transition="none">
+                                            <i class="f7-icons">arrow_right</i>
+                                          </a>
+                                                          
+                                    </div>
+                                  </div>
+                                </div>
+                    
+                                                
+                    
+                    
+                     
+                                                
+
+                    
+                            <div class="card">
+                                
+                                <div class="card-header">
+                                    Attributes
+                                </div>
+                    
+                                <div class="card-content data-table">
+                    
+                                                        
+                                </div>
+                    
+                            </div>
+                    
+                    
+                                                            
+                    
+                                                            <div class="card">
+                                    <div class="card-header">Cover Image</div>
+                                    <div class="card-content">
+                                        <img src="/mr-test-the-test-machine/backup/export/images/QmUxfZLgxk4tjHGUtDy3VkRSiMdAVrAZiN96qE9fZ8NmiM.svg" class="cover-image-preview" />
+                                    </div>
+                                </div>
+                                                
+                    
+                    
+                        </div>
+                    
+                        <div class="left">
+                            
+<div class="block block-strong inset">
+
+    <span class="footer-link">
+      <strong>Large NFT</strong> code licensed under <a href="https://github.com/LargeNFT/large-nft/blob/master/LICENSE.md" class="external">MIT</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://github.com/LargeNFT/large-nft" class="external">GitHub</a>
+    </span>
+
+    <span class="footer-link">
+      <a href="https://twitter.com/large_nft" class="external">Twitter</a>
+    </span>
+
+</div>
+          
+                        </div>
+
+
+                    </div>
+
+
+<!--                     
+                    <div class="swiper" id="swiper-1" style="display:none;">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" data-url="/mr-test-the-test-machine/index.html">
+                            </div> 
+
+                            <div class="swiper-slide">   
+
+
+
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div> -->
+
+                </div>
+
+            </div>
+            <!--/pageContent-->
+
+        </div>
+
+    </div>
+
+    
+    
+    <script type="module" id="page-init-scripts">    
+
+        //pageInitScripts
+///pageInitScripts
+
+    </script>
+
+    
+
+    <script type="module" id="page-scripts">
+
+        let init = () => {
+
+            let baseURL = '/mr-test-the-test-machine/'
+            let hostname = 'https://ptoner.github.io'
+            let version = atob('IjAuMjEuMyI=').replace('"', '').replace('"', '')
+            let channelId = '4be0885f-ec83-4c53-ae74-109f2bde5f34'    
+
+            let app = reader.initReader(baseURL, hostname, version, channelId)
+        }
+
+        init()
+
+    
+        
+    </script>
+
+
+    
+
+
+
+
+    
+
+</body>
+
+</html>
